@@ -26,6 +26,7 @@ public class AuthenticationService {
         authenticate(email, password);
         final UserDetails userDetails = jwtUserDetailsService.loadUserByUsername(email);
         final String token = jwtTokenUtil.generateToken(userDetails);
+
         return token;
     }
 
