@@ -14,4 +14,12 @@ public class PostService {
     public void save(Post post){
         this.postRepository.save(post);
     }
+
+    public Post getNewPost() {
+        Post post = new Post("New Post", "No Content");
+        this.postRepository.save(post);
+        post.setTitle("Post " + post.getId());
+        this.postRepository.save(post);
+        return post;
+    }
 }

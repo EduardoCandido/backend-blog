@@ -5,10 +5,7 @@ import com.educandidoblog.educandidoblog.models.dto.PostRequestDto;
 import com.educandidoblog.educandidoblog.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -18,6 +15,13 @@ public class PostController {
 
     @Autowired
     PostService postService;
+
+    @GetMapping
+    @RequestMapping("/new")
+    public ResponseEntity<Post> createNewPost(){
+        Post post = postService.getNewPost();
+        return ResponseEntity.ok(post);
+    }
 
     @PostMapping()
     public ResponseEntity<Post> savePost(@RequestBody @Valid PostRequestDto postForm){
