@@ -13,6 +13,7 @@ public class Post {
     private String title;
     @Column(columnDefinition = "LONGTEXT")
     private String content;
+    private String pathArticleFile;
 
     public Post() {
     }
