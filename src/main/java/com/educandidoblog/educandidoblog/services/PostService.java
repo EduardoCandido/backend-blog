@@ -5,6 +5,8 @@ import com.educandidoblog.educandidoblog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class PostService {
 
@@ -21,5 +23,10 @@ public class PostService {
         post.setTitle("Post " + post.getId());
         this.postRepository.save(post);
         return post;
+    }
+
+    public Post getPostById(Long id) {
+        Optional<Post> post = this.postRepository.findById(id);
+        return post.get();
     }
 }

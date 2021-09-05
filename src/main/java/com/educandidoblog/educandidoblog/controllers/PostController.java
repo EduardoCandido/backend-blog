@@ -23,6 +23,13 @@ public class PostController {
         return ResponseEntity.ok(post);
     }
 
+    @GetMapping
+    @RequestMapping("/{id}")
+    public ResponseEntity<Post> getPostById(@PathVariable Long id){
+        Post post = postService.getPostById(id);
+        return ResponseEntity.ok(post);
+    }
+
     @PostMapping()
     public ResponseEntity<Post> savePost(@RequestBody @Valid PostRequestDto postForm){
         Post post = new Post(postForm);
