@@ -3,6 +3,7 @@ package com.educandidoblog.educandidoblog.models;
 import com.educandidoblog.educandidoblog.models.dto.PostRequestDto;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -13,6 +14,16 @@ public class Post {
     private String title;
     @Column(columnDefinition = "LONGTEXT")
     private String content;
+
+    @OneToMany
+    @JoinTable(name = "Post_Tag",
+        joinColumns = @JoinColumn(name = "post_id"),
+        inverseJoinColumns = @JoinColumn(name = "tag_id")
+    )
+    private List<Tag> tags;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    User user;
 
     public Post() {
     }
@@ -32,6 +43,8 @@ public class Post {
         this.id = postForm.getId();
         this.title = postForm.getTitle();
         this.content = postForm.getContent();
+        this.user = new User();
+        this.user.setId(postForm.getUserId());
     }
 
     public Long getId() {
