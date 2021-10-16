@@ -16,6 +16,11 @@ public class Tag {
 
     private String name;
 
+    public Tag(Long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public Tag(TagDto tagForm) {
         this.id = tagForm.getId();
         this.name = tagForm.getName();
