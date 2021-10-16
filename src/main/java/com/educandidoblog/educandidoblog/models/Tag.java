@@ -1,5 +1,7 @@
 package com.educandidoblog.educandidoblog.models;
 
+import com.educandidoblog.educandidoblog.models.dto.TagDto;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -13,6 +15,11 @@ public class Tag {
     private Long id;
 
     private String name;
+
+    public Tag(TagDto tagForm) {
+        this.id = tagForm.getId();
+        this.name = tagForm.getName();
+    }
 
     public Long getId() {
         return id;
@@ -28,5 +35,10 @@ public class Tag {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public TagDto convertToDto(){
+        TagDto tagDto = new TagDto(this.id, this.name);
+        return tagDto;
     }
 }
