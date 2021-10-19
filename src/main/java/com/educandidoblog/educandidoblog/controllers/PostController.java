@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/post")
@@ -28,6 +29,13 @@ public class PostController {
     public ResponseEntity<Post> getPostById(@PathVariable Long id){
         Post post = postService.getPostById(id);
         return ResponseEntity.ok(post);
+    }
+
+    @GetMapping
+    @RequestMapping("/by-user/{userId}")
+    public ResponseEntity<List<Post>> listAllByUser(@PathVariable Long userId){
+        List<Post> posts = postService.getPostsByUser(userId);
+        return ResponseEntity.ok(posts);
     }
 
     @PostMapping()

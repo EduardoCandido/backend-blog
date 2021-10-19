@@ -5,6 +5,7 @@ import com.educandidoblog.educandidoblog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -28,5 +29,9 @@ public class PostService {
     public Post getPostById(Long id) {
         Optional<Post> post = this.postRepository.findById(id);
         return post.get();
+    }
+
+    public List<Post> getPostsByUser(Long userId) {
+        return this.postRepository.findPostsByUser(userId);
     }
 }

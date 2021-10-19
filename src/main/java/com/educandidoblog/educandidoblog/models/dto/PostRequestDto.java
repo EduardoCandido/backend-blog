@@ -1,6 +1,9 @@
 package com.educandidoblog.educandidoblog.models.dto;
 
+import com.educandidoblog.educandidoblog.models.Tag;
+
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 public class PostRequestDto {
 
@@ -14,6 +17,17 @@ public class PostRequestDto {
 
     @NotNull(message = "Autor obrigatório")
     private Long userId;
+
+    @NotNull(message = "Selecione ao menos uma tag")
+    private List<Tag> tags;
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
+    }
 
     public Long getId() {
         return id;

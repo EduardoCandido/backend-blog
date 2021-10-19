@@ -45,6 +45,7 @@ public class Post {
         this.content = postForm.getContent();
         this.user = new User();
         this.user.setId(postForm.getUserId());
+        this.tags = postForm.getTags();
     }
 
     public Long getId() {
@@ -69,5 +70,13 @@ public class Post {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public List<Tag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<Tag> tags) {
+        this.tags = tags;
     }
 }
