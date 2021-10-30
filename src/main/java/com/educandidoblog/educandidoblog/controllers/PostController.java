@@ -6,8 +6,10 @@ import com.educandidoblog.educandidoblog.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -43,5 +45,12 @@ public class PostController {
         Post post = new Post(postForm);
         postService.save(post);
         return ResponseEntity.ok(post);
+    }
+
+    @PostMapping
+    @RequestMapping("/{id}/image")
+    public ResponseEntity savePostImage(@RequestBody MultipartFile image) throws IOException {
+        postService.savePostImage(image);
+        return ResponseEntity.ok(null);
     }
 }

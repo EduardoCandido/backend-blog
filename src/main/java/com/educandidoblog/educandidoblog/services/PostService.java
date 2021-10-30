@@ -2,9 +2,14 @@ package com.educandidoblog.educandidoblog.services;
 
 import com.educandidoblog.educandidoblog.models.Post;
 import com.educandidoblog.educandidoblog.repository.PostRepository;
+import com.google.common.io.Files;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,5 +38,21 @@ public class PostService {
 
     public List<Post> getPostsByUser(Long userId) {
         return this.postRepository.findPostsByUser(userId);
+    }
+
+    public void savePostImage(MultipartFile file) throws IOException {
+        if(!file.isEmpty()){
+            String uploadsDir = "D:/projetos/educandido-blog/backend/src/main/resources/static/images/posts/" + file.getOriginalFilename() + ".jpeg";
+            File convertedFile = new File(uploadsDir);
+            if(convertedFile.exists()){
+                convertedFile.delete();
+            }
+            convertedFile.createNewFile();
+            try (FileOutputStream fileOutputStream = new FileOutputStream(convertedFile)) {
+                fileOutputStream.write(file.getBytes());
+            }catch (Exception error){
+                error.printStackTrace();
+            }
+        }
     }
 }
