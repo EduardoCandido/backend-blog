@@ -1,12 +1,14 @@
 package com.educandidoblog.educandidoblog.services;
 
 import com.educandidoblog.educandidoblog.models.Post;
+import com.educandidoblog.educandidoblog.models.dto.PostResponseDto;
 import com.educandidoblog.educandidoblog.repository.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,5 +53,15 @@ public class PostService {
                 error.printStackTrace();
             }
         }
+    }
+
+    public List<PostResponseDto> getPosts() {
+        List<Post> posts = postRepository.findAll();
+        List<PostResponseDto> postResponseDtos = new ArrayList<>();
+        posts.forEach(post -> {
+            PostResponseDto postResponseDto = new PostResponseDto(post);
+            postResponseDtos.add(postResponseDto);
+        });
+        return postResponseDtos;
     }
 }

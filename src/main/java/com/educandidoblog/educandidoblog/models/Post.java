@@ -22,8 +22,8 @@ public class Post {
     )
     private List<Tag> tags;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    User user;
+    @ManyToOne()
+    private User user;
 
     public Post() {
     }
@@ -78,5 +78,13 @@ public class Post {
 
     public void setTags(List<Tag> tags) {
         this.tags = tags;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
