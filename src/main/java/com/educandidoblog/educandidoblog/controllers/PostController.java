@@ -48,7 +48,7 @@ public class PostController {
     }
 
     @PostMapping
-    @RequestMapping("/{id}/image")
+    @RequestMapping(value = "/{id}/image", method = RequestMethod.POST)
     public ResponseEntity savePostImage(@RequestBody MultipartFile image) throws IOException {
         postService.savePostImage(image);
         return ResponseEntity.ok(null);

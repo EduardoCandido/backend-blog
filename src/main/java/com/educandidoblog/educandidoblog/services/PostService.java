@@ -2,14 +2,11 @@ package com.educandidoblog.educandidoblog.services;
 
 import com.educandidoblog.educandidoblog.models.Post;
 import com.educandidoblog.educandidoblog.repository.PostRepository;
-import com.google.common.io.Files;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.util.List;
 import java.util.Optional;
 

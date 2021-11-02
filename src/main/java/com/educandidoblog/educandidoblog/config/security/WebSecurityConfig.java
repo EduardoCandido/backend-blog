@@ -53,6 +53,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             // Não cheque essas requisições
             .antMatchers("/auth").permitAll()
             .antMatchers("/posts").permitAll()
+            .antMatchers("/images/post/{id}").permitAll()
             // Qualquer outra requisição deve ser checada
             .anyRequest().authenticated().and().csrf().disable()
             .sessionManagement()
