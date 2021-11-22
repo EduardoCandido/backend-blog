@@ -12,6 +12,7 @@ Este é o repositório de um blog usando tecnologias como Java com Spring Boot.
 
 ## Links utéis
 
-[Link do repositório do frontend deste blog](https://github.com/EduardoCandido/frontend-blog)
+[Link do repositório do frontend deste blog](https://github.com/EduardoCandido/frontend-blog
+)
 
 

@@ -3,6 +3,7 @@ package com.educandidoblog.educandidoblog.models;
 import com.educandidoblog.educandidoblog.models.dto.PostRequestDto;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -12,6 +13,10 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
+
+    @Column(name = "release_date")
+    private LocalDate releaseDate = LocalDate.now();
+
     @Column(columnDefinition = "LONGTEXT")
     private String content;
 
@@ -86,5 +91,13 @@ public class Post {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public LocalDate getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(LocalDate releaseDate) {
+        this.releaseDate = releaseDate;
     }
 }
