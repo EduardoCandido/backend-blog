@@ -1,4 +1,4 @@
-# BlogEducandido
+# Blog
 
 ## O que é?
 
